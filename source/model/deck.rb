@@ -10,11 +10,22 @@ class Deck
 
   def make_deck(filename,new_deck=[])
     deck = Deck.new
-    deck.parser(filename,new_deck)
+    @file = filename
+    deck.parser(@file,new_deck)
     @deck = new_deck
     @deck
   end
 
+
+  def add_card(defin,ans)
+    card = Card.new({def: defin, term: ans})
+    @deck << card
+
+    File.open(@file,"a+") do |file|
+      file.puts(defin)
+      file.puts(ans)
+    end
+  end
 end
 
 
