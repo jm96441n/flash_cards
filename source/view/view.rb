@@ -13,7 +13,7 @@ module View
   end
 
   def self.input
-    gets.chomp
+    gets.chomp.downcase
   end
 
   def self.p_term(card)
@@ -21,11 +21,20 @@ module View
   end
 
   def self.try_again
-    puts 'Wrong answer dummy, try again loser'
+    incorrect = ['Wrong answer dummy, try again loser',
+          '+5 points for for creativity. -5 for being a dummy.','Incorrect. I have a self help book recommendation for you: Not Being Such a Dummy, For Dummies', 'Hint: Give up, dummy','Well, this is going to take a while', 'Really? Just making up words now?....Unbelievable.'
+          ]
+    puts incorrect.sample
+    puts ' '
   end
 
   def self.correct
     puts 'That is correct, good job not screwing up'
+    puts ' '
+  end
+
+  def self.end_game
+    puts 'No more cards dummy, try again'
   end
 
 end
