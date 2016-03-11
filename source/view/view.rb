@@ -11,14 +11,31 @@ module View
     puts "To view all the cards, type:" + " 'view'".colorize(:green)
     puts "To add a card, type:" + " 'add'".colorize(:magenta)
     puts "To quit, type:" + " 'QUIT'".colorize(:light_blue)
+    puts " "
   end
+
+  def self.choose_deck
+    puts  ' '
+    puts "Choose your deck:"
+    puts "Nighthawk"
+    puts "Otter"
+    puts "Raccoon"
+    puts ' '
+  end
+
 
   def self.input
     gets.chomp.downcase
   end
 
   def self.p_term(card)
-    puts card.term.colorize(:yellow)
+    puts ' '
+    puts (card.term).colorize(:yellow)
+  end
+
+  def self.p_def(card)
+    puts " "
+    puts 'Stupid, here\'s the answer, don\'t forget it: ' + (card.def).colorize(:green)
   end
 
   def self.try_again
