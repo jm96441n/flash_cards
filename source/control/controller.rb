@@ -33,26 +33,44 @@ class Control
   end
 
   def self.game
-    test_card = @new_deck
+    @test_card = @new_deck
     @new_deck.each do |test_card|
       View.p_term(test_card)
       answer = View.input
-      if answer == 'skip'
-        @incorrect_cards << test_card
+      if answer.downcase == 'skip'
+        Control.skip
       else
-        until answer == test_card.def.downcase
+        guess_count = 1
+        until answer == test_card.def.downcase || guess_count == 3
           if !@incorrect_cards.include?(test_card)
             @incorrect_cards << test_card
           end
+
+          guess_count += 1
           View.try_again
           answer = View.input
         end
+        if guess_count == 3
+          Control.next_up
+        else
+          View.correct
+        end
+      end
       @used_cards << test_card
-      View.correct
     end
   end
 
+    def self.skip
+        View.skip
+        @incorrect_cards << @test_card
+        @new_deck << @test_card
+    end
 
+    def self.next_up
+        View.next_up
+        @incorrect_cards << @test_card
+        @new_deck << @test_card
+    end
 
 
 

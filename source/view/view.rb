@@ -30,12 +30,12 @@ module View
   end
 
   def self.correct
-    puts 'That is correct, good job not screwing up'
+    puts 'That is correct, good job not screwing up'.colorize(:green)
     puts ' '
   end
 
   def self.end_game
-    puts 'No more cards dummy, try again'
+    puts 'No more cards dummy, try again'.blue.on_red.blink
   end
 
   def self.add_defin
@@ -50,8 +50,8 @@ module View
 
   def self.view_all(card)
     puts''
-    puts card.term.colorize(:orange)
-    puts card.def.colorize(:purple)
+    puts card.term.colorize(:magenta)
+    puts card.def.colorize(:light_blue)
   end
 
   def self.incorrect_message
@@ -63,6 +63,15 @@ module View
     puts ' '
     puts card.term
     puts card.def
+  end
+
+  def self.skip
+    puts "You skipped, probably shouldn't have skipped studying dummy".colorize(:magenta)
+  end
+
+  def self.next_up
+    puts "You got it wrong too many times, stop being so stupid".black.on_magenta
+    puts ' '
   end
 
 end
